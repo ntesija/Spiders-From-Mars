@@ -1,12 +1,16 @@
-    var btn = document.createElement("BUTTON")
-    var t = document.createTextNode("CLICK ME");
-    /*chrome.runtime.onMessage.addListener(
-        function(request, sender, sendResponse) {
-            t = document.createTextNode(request.greeting);
+console.log("injecting"); 
+isLoaded = false;
+var btn = document.createElement("BUTTON");
+var t = document.createTextNode("CLICK ME");
+var node = document.createElement("LI");
+var textnode = document.createTextNode("EXPEDIA.... DOT COM!");
+node.appendChild(textnode);
+btn.appendChild(t);
 
-
-
-        });*/
-    btn.appendChild(t);
-    //Appending to DOM 
-    document.getElementById("headerArea").appendChild(btn);
+if (!isLoaded) {
+	var x = $("#event_summary").find("div");
+	x.find("ul").append("<li> Hi </li>");
+	console.log("Appeneded li");
+	isLoaded = true;
+}
+	

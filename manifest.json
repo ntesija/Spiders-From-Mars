@@ -12,13 +12,16 @@
   },
   "permissions": [
     "activeTab",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+	"tabs",
+	"webNavigation"
   ],
+  
   "content_scripts": [
     {
       "matches": ["https://www.facebook.com/events/*", "http://www.facebook.com/events/*"],
-      "exclude_globs" : ["https://www.facebook.com/events/upcoming*", "http://www.facebook.com/events/upcoming*", "https://www.facebook.com/events/calendar*", "http://www.facebook.com/events/calendar*", "https://www.facebook.com/events/subscribed*", "http://www.facebook.com/events/subscribed*", "https://www.facebook.com/events/past*", "http://www.facebook.com/events/past*", "https://www.facebook.com/events/explore*", "http://www.facebook.com/events/explore*", "https://www.facebook.com/events/birthdays*", "http://www.facebook.com/events/birthdays*", "https://www.facebook.com/events/invites*", "http://www.facebook.com/events/invites*", "https://www.facebook.com/events/saved*", "http://www.facebook.com/events/saved*", "https://www.facebook.com/events/hosting*", "http://www.facebook.com/events/hosting*"],
-      "js": ["expediaInject.js"],
+      //"exclude_globs" : ["https://www.facebook.com/events/upcoming*", "http://www.facebook.com/events/upcoming*", "https://www.facebook.com/events/calendar*", "http://www.facebook.com/events/calendar*", "https://www.facebook.com/events/subscribed*", "http://www.facebook.com/events/subscribed*", "https://www.facebook.com/events/past*", "http://www.facebook.com/events/past*", "https://www.facebook.com/events/explore*", "http://www.facebook.com/events/explore*", "https://www.facebook.com/events/birthdays*", "http://www.facebook.com/events/birthdays*", "https://www.facebook.com/events/invites*", "http://www.facebook.com/events/invites*", "https://www.facebook.com/events/saved*", "http://www.facebook.com/events/saved*", "https://www.facebook.com/events/hosting*", "http://www.facebook.com/events/hosting*"],
+      "js": ["jquery.min.js", "expediaInject.js"],
       "all_frames": true
     }
   ]
