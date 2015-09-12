@@ -9,7 +9,7 @@ btn.appendChild(t);
 
 if (!isLoaded) {
 	var x = $("#event_summary").find("div");
-	x.find("ul").append("<li> Hi </li>");
+	x.find("ul").append("<li><center><h1>EXPEDIA</h1><p><table style = 'width:100%; text-align:center'><tr><td> City </td><td> Day In </td><td> Day Out </td><td> Price: $ </td></tr><tr><td> City </td><td> Day In </td><td> Day Out </td><td> Price: $ </td></tr><tr><td> City </td><td> Day In </td><td> Day Out </td><td> Price: $ </td></tr></table></p></center></li>");
 	console.log("Appeneded li");
 	isLoaded = true;
 }
