@@ -5,6 +5,7 @@
 
 .info
 {
+	text-align:center !important;
 }
 
 .titleInfo:hover
@@ -19,7 +20,7 @@
 
 .expander
 {
-	font-family:helvetica;
-	font-size:14px;
+	font-family:helvetica !important;
+	font-size:14px !important;
 	color:#4e5665;
 }
