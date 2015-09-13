@@ -38,7 +38,8 @@ $( document ).ready(function() {
 
 		startDate = $("span[itemprop = 'startDate']").attr("content");
 		startDate = new Date(startDate);
-		endDate = startDate;
+		//endDate = startDate;
+        endDate.setDate(startDate.getDate());
 	}
 	console.log(startDate);
 	console.log(endDate);
