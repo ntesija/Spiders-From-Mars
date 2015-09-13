@@ -1,0 +1,25 @@
+.hide
+{
+	display:none;
+}
+
+.info
+{
+}
+
+.titleInfo:hover
+{
+}
+
+.expander:hover
+{
+	background-color:#f6f7f8;
+	cursor:pointer;
+}
+
+.expander
+{
+	font-family:helvetica;
+	font-size:14px;
+	color:#4e5665;
+}

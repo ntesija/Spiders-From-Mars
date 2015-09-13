@@ -1,27 +1,40 @@
 <li>
-	<h1>
-		<center> EXPEDIA </center>
-	</h1>
+	<font-size='12px' face='helvtica'>
 	<p>
-	<table style = "width:100%">
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-	</table>
-	</p>
+	<center>
+		<table style = 'width:85%' class = 'titleInfo'>
+			<tr>
+				<td>EXPEDIA</td>
+			</tr>
+		</table>
+		<table style = 'width:85%' class = 'info hide'>
+			<tr>
+				<td> City </td>
+				<td> Day In </td>
+				<td> Day Out </td>
+				<td> Price: $ </td>
+			</tr>
+			<tr>
+				<td> City </td>
+				<td> Day In </td>
+				<td> Day Out </td>
+				<td> Price: $ </td>
+			</tr>
+			<tr>
+				<td> City </td>
+				<td> Day In </td>
+				<td> Day Out </td>
+				<td> Price: $ </td>
+			</tr>
+		</table>
+		</p>
+	</center>
+	</font>
+	<script>
+		var clickArea = document.getElementsByClassName('titleInfo')[0];
+		clickArea.addEventListener('click', function(){
+			var dropDown = document.getElementsByClassName('info')[0];
+			dropDown.classList.toggle('hide');
+		})
+	</script>
 </li>
