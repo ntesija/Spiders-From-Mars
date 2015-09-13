@@ -16,6 +16,8 @@
 
 //parseDates ("Sep 12 at 9:00am to Sep 13 at 5:00pm");
 
+var toReturn = ["bliiiiing", "", ""];
+
 $( document ).ready(function() {
 	var startDate = new Date(), endDate = new Date();
 	console.log( 'ready!' );
@@ -27,16 +29,49 @@ $( document ).ready(function() {
 
 	var now = new Date();
 	if (dateString.includes("to")) {
+        console.log("this");
 		var splitDateStrings = dateString.split("to");
 		startDate = new Date(splitDateStrings[0].substring(0, splitDateStrings[0].indexOf('at')) + startDate.getFullYear());
 		endDate = new Date(splitDateStrings[1].substring(0, splitDateStrings[1].indexOf('at')) + endDate.getFullYear());
 	} else {
+                console.log("that");
+
 		startDate = $("span[itemprop = 'startDate']").attr("content");
 		startDate = new Date(startDate);
-		endDate = startDate;
+		//endDate = startDate;
+        endDate.setDate(startDate.getDate());
 	}
 	console.log(startDate);
 	console.log(endDate);
+
+    toReturn = [startDate, endDate, locationString];
+
+
+
+
+    console.log("injecting"); 
+    isLoaded = false;
+
+    //var expediaResult = getExpediaResults(location, startDate, endDate);
+
+    var city = toReturn[2];
+    
+    toReturn[0].setDate(toReturn[0].getDate()-1);
+    toReturn[1].setDate(toReturn[1].getDate()+1);
+    var start = toReturn[0].getMonth() + "-" + toReturn[0].getDate() + '-' + toReturn[0].getFullYear();
+    var end = toReturn[1].getMonth() + "-" + toReturn[1].getDate() + '-' + toReturn[1].getFullYear();
+    var price = ['$', '$$', '$$$'];
+    var url = ['https://www.google.com', 'https://www.google.com', 'https://www.google.com'];
+
+    var codeIn = "<li class='expander'><p><center><table style='width:85%' class='titleInfo'><tr><td>Travel to " + city + " from " + start + " to " + end + "</td></tr></table><table style='width:85%' class='info hide'><tr><td> Price: " + price[0] + " </td><td><div align='right'><form action = '" + url[0] +"'><input type='submit' value = 'Book Now!'></form></div></td></tr><tr><td> Price: " + price[1] + " </td><td><div align='right'><form action = '" + url[1] + "'><input type='submit' value = 'Book Now!'></form></div></td></tr><tr><td> Price: " + price[2] + " </td><td><div align='right'><form action = '" + url[2] + "'><input type='submit' value = 'Book Now!'></form></div></td></tr></table></p></center><script>var clickArea=document.getElementsByClassName('titleInfo')[0];clickArea.addEventListener('click', function(){var dropDown=document.getElementsByClassName('info')[0];dropDown.classList.toggle('hide');})</script></li>"
+    if (!isLoaded) {
+        var x = $("#event_summary").find("div");
+        x.find("ul").append(codeIn);
+        console.log("Appeneded li");
+        isLoaded = true;
+}
+
+
 });
 
 

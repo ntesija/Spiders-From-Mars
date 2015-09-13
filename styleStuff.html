@@ -1,27 +1,23 @@
-<li>
-	<h1>
-		<center> EXPEDIA </center>
-	</h1>
+<li class = 'expander'>
 	<p>
-	<table style = "width:100%">
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-		<tr>
-			<td> City </td>
-			<td> Day In </td>
-			<td> Day Out </td>
-			<td> Price: $ </td>
-		</tr>
-	</table>
-	</p>
+	<center>
+		<table style='width:85%' class='titleInfo'>
+			<tr>
+				<td>Travel to " + city + " from " + start + " to " + end + "</td>
+			</tr>
+		</table>
+		<table style='width:85%' class='info hide'>
+			<tr>
+				<td> Price: " + price[0] + " <div align='right'><form action = '" + url[0] + "'><input type='submit' value = 'Book!'></form></div></td>
+			</tr>
+			<tr>
+				<td> Price: " + price2 + " </td>
+			</tr>
+			<tr>
+				<td> Price: " + price3 + " </td>
+			</tr>
+		</table>
+		</p>
+	</center>
+	<script>var clickArea=document.getElementsByClassName('titleInfo')[0];clickArea.addEventListener('click', function(){var dropDown=document.getElementsByClassName('info')[0];dropDown.classList.toggle('hide');})</script>
 </li>
