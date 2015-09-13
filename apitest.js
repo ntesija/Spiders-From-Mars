@@ -1,6 +1,7 @@
 var Expedia{}(
 	var hotelApiUrl = "http://terminal2.expedia.com/x/hotels";
 	var packageApiUrl = "http://terminal2.expedia.com/x/packages";
+	var airportApiUrl = "http://terminal2.expedia.com/x/geo/features?within=50km&"; //make distance configurable later on
 	var expPubKey = "37bjvD22imdEkcidS2Uc6bZ6Qe2uGimr";
 	var sitaPubKey = "e5d59a09c547bc478101c152c707ea30";
 	var xmlhttp = new XMLHttpRequest();
@@ -64,8 +65,8 @@ function getAirports(destination){
 	destLat = latlng.lat;
 	destLon = latlng.lng;
 	//Specify the request to the SITA API
-	originUrl += userLat.toString() + '/' + userLon.toString() + '/' + 'maxAirports=5' + '&user_key=' + sitaPubKey;
-	destinationUrl += destLat.toString() + '/' + destLon.toString() + '/' + 'maxAirports=5' + '&user_key=' + sitaPubKey;
+	originUrl += userLat.toString() + '/' + userLon.toString() + '/' + 'maxAirports=3' + '&user_key=' + sitaPubKey;
+	destinationUrl += destLat.toString() + '/' + destLon.toString() + '/' + 'maxAirports=3' + '&user_key=' + sitaPubKey;
 
 	var originXmlHttp = new XMLHttpRequest();
 	var destXmlHttp = new XMLHttpRequest();
@@ -115,13 +116,33 @@ function getGeocode(destination) {
 	return latlng;
 }
 
-//This function will loop through the list of airports and find the cheapeast 
+//This function will loop through the list of airports and find the 3 cheapeast 
 //package deal (if any exists) between two airports
-function getPackageData(airports){
-	var origin = airports.origin;
-	var dest = airports.dest;
-
+function getBestPackageData(airports){
+	var packageRequestUrl = "";
+	var origins = airports.origin;
+	var dests = airports.dest;
+	var packages = [];
+	//For every pair of closeby airports between origin and destination, search for a package deal
+	for (var originPort in origins.airports){
+		for(var destPort in dests.airports){
+			var currentPairRequestUrl = ;
+			var packageXmlHttp = newXMLHttpRequest();
+			packageXmlHttp.onreadystatechange = function(){
+				if(packageXmlHttp.readyState == 4 && packageXmlHttp.responseText == 200){ //add condition for there actually being a package
+					packages.push(JSON.parse(packageXmlHttp.responseText));
+				}
+			}
+			packageXmlHttp.open("GET", currentPairRequestUrl, true);
+			packageXmlHttp.send();
+		}
+	}
+	//Sort packages by descending price, return the top three
+	packages.sort(function(a, b){
+		return parseFloat(a.value) - parseFloat(b.value);
+	});
 	
+	return [packages[0], packages [1], packages[2]];
 }
 
 /*
