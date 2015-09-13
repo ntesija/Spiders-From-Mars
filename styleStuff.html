@@ -1,40 +1,24 @@
-<li>
-	<font-size='12px' face='helvtica'>
+<li class = 'expander'>
 	<p>
 	<center>
-		<table style = 'width:85%' class = 'titleInfo'>
+		<table style='width:85%' class='titleInfo'>
 			<tr>
-				<td>EXPEDIA</td>
+				<td>Travel to " + city + " from " + start + " to " + end + "</td>
 			</tr>
 		</table>
-		<table style = 'width:85%' class = 'info hide'>
+		<table style='width:85%' class='info hide'>
 			<tr>
-				<td> City </td>
-				<td> Day In </td>
-				<td> Day Out </td>
-				<td> Price: $ </td>
+				<td> Price: " + price1 + " </td>
+				<td><form action = 'http://google.com'><input type='submit' value = 'Book!'></form></td>
 			</tr>
 			<tr>
-				<td> City </td>
-				<td> Day In </td>
-				<td> Day Out </td>
-				<td> Price: $ </td>
+				<td> Price: " + price2 + " </td>
 			</tr>
 			<tr>
-				<td> City </td>
-				<td> Day In </td>
-				<td> Day Out </td>
-				<td> Price: $ </td>
+				<td> Price: " + price3 + " </td>
 			</tr>
 		</table>
 		</p>
 	</center>
-	</font>
-	<script>
-		var clickArea = document.getElementsByClassName('titleInfo')[0];
-		clickArea.addEventListener('click', function(){
-			var dropDown = document.getElementsByClassName('info')[0];
-			dropDown.classList.toggle('hide');
-		})
-	</script>
+	<script>var clickArea=document.getElementsByClassName('titleInfo')[0];clickArea.addEventListener('click', function(){var dropDown=document.getElementsByClassName('info')[0];dropDown.classList.toggle('hide');})</script>
 </li>
