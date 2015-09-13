@@ -118,16 +118,33 @@ function getGeocode(destination) {
 
 //This function will loop through the list of airports and find the 3 cheapeast 
 //package deal (if any exists) between two airports
-function getBestPackageData(airports){
-	var packageRequestUrl = "";
+//http://terminal2.expedia.com/x/packages?departureDate={departuredate}&originAirport={origin} &destinationAirport={destination}&returnDate={returndate}&regionid={regionid}&apikey=INSERT_KEY_HERE
+//date is formatted as "YYYY-MM-DD"
+function getBestPackageData(airports, date){
+
+	var dateSplit = date.split("-");
+	var eventDate = new Date(parseInt(dateSplit[0]), parseInt(dateSplit[1]), parseInt(dateSplit[2]), 0,0,0,0);
+	
+	var departureDate = eventDate.getDate() - 1;
+	var returnDate = eventDate.getDate() + 1;
+
+	//Formats the day before and the day after as YYYY-MM-DD, as the API expects
+	var departString = departureDate.toISOString().split("T",1);
+	var returnString = departureDate.toISOString().split("T",1);
+
+	var packageRequestUrl = "http://terminal2.expedia.com/x/packages?departureDate=";
 	var origins = airports.origin;
 	var dests = airports.dest;
 	var packages = [];
 	//For every pair of closeby airports between origin and destination, search for a package deal
 	for (var originPort in origins.airports){
 		for(var destPort in dests.airports){
-			var currentPairRequestUrl = ;
-			var packageXmlHttp = newXMLHttpRequest();
+			//Put together the package request for each pair of airports. Limit package to top result only
+			var currentPairRequestUrl = packageRequestUrl + departString + "&originAirport=" + originPort.code;
+			currentPairRequestUrl += "&destinationAirport=" + destPort.code + "&returnDate=" + returnString;
+			currentPairRequestUrl += "&apikey=" + Expedia.expPubKey;
+
+			var packageXmlHttp = newXMLHttpRequest(); //This could be an issue if callback isn't executed by the time the inner loop finishes execution
 			packageXmlHttp.onreadystatechange = function(){
 				if(packageXmlHttp.readyState == 4 && packageXmlHttp.responseText == 200){ //add condition for there actually being a package
 					packages.push(JSON.parse(packageXmlHttp.responseText));
