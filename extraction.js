@@ -55,6 +55,8 @@ $( document ).ready(function() {
 
     var city = toReturn[2];
     
+    toReturn[0].setDate(toReturn[0].getDate()-1);
+    toReturn[1].setDate(toReturn[1].getDate()+1);
     var start = toReturn[0].getMonth() + "-" + toReturn[0].getDate() + '-' + toReturn[0].getFullYear();
     var end = toReturn[1].getMonth() + "-" + toReturn[1].getDate() + '-' + toReturn[1].getFullYear();
     var price = ['$', '$$', '$$$'];
