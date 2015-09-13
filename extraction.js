@@ -31,7 +31,8 @@ $( document ).ready(function() {
 		startDate = new Date(splitDateStrings[0].substring(0, splitDateStrings[0].indexOf('at')) + startDate.getFullYear());
 		endDate = new Date(splitDateStrings[1].substring(0, splitDateStrings[1].indexOf('at')) + endDate.getFullYear());
 	} else {
-		startDate = new Date(dateString.substring(0, dateString.indexOf('at')) + startDate.getFullYear());
+		startDate = $("span[itemprop = 'startDate']").attr("content");
+		startDate = new Date(startDate);
 		endDate = startDate;
 	}
 	console.log(startDate);
