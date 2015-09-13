@@ -1,11 +1,11 @@
 
 //1) Extracting data from the Facebook Event Page DOM
-var startDate = new Date(), endDate = new Date();
+var startDate = new Date(), endDate = new Date(), locationstring = "";
 $( document ).ready(function() {
 	console.log( 'ready!' );
 	//var startDate = $("span[itemprop = 'startDate']").attr("content");
 	var dateString = $('._3slj ._6a ._5xhp').text();
-	var locationString = $('._3xd0 ._6a ._5xhp').text();
+	locationString = $('._3xd0 ._6a ._5xhp').text();
 	console.log(locationString);
 	console.log(dateString);
 
@@ -16,12 +16,10 @@ $( document ).ready(function() {
 		startDate = new Date(splitDateStrings[0].substring(0, splitDateStrings[0].indexOf('at')) + startDate.getFullYear());
 		endDate = new Date(splitDateStrings[1].substring(0, splitDateStrings[1].indexOf('at')) + endDate.getFullYear());
 	} else {
-                console.log("that");
-
 		startDate = $("span[itemprop = 'startDate']").attr("content");
 		startDate = new Date(startDate);
 		//endDate = startDate;
-        endDate.setDate(startDate.getDate());
+    endDate.setDate(startDate.getDate());
 	}
 	console.log(startDate);
 	console.log(endDate);
