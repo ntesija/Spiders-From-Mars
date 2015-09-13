@@ -132,6 +132,7 @@ function getBestPackageData(airports, date){
 	var departString = departureDate.toISOString().split("T",1);
 	var returnString = departureDate.toISOString().split("T",1);
 
+	var packageLimit = 3;
 	var packageRequestUrl = "http://terminal2.expedia.com/x/packages?departureDate=";
 	var origins = airports.origin;
 	var dests = airports.dest;
@@ -142,7 +143,7 @@ function getBestPackageData(airports, date){
 			//Put together the package request for each pair of airports. Limit package to top result only
 			var currentPairRequestUrl = packageRequestUrl + departString + "&originAirport=" + originPort.code;
 			currentPairRequestUrl += "&destinationAirport=" + destPort.code + "&returnDate=" + returnString;
-			currentPairRequestUrl += "&apikey=" + Expedia.expPubKey;
+			currentPairRequestUrl += "&limit=" + packageLimit + "&apikey=" + Expedia.expPubKey;
 
 			var packageXmlHttp = newXMLHttpRequest(); //This could be an issue if callback isn't executed by the time the inner loop finishes execution
 			packageXmlHttp.onreadystatechange = function(){
