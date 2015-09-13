@@ -29,10 +29,13 @@ $( document ).ready(function() {
 
 	var now = new Date();
 	if (dateString.includes("to")) {
+        console.log("this");
 		var splitDateStrings = dateString.split("to");
 		startDate = new Date(splitDateStrings[0].substring(0, splitDateStrings[0].indexOf('at')) + startDate.getFullYear());
 		endDate = new Date(splitDateStrings[1].substring(0, splitDateStrings[1].indexOf('at')) + endDate.getFullYear());
 	} else {
+                console.log("that");
+
 		startDate = $("span[itemprop = 'startDate']").attr("content");
 		startDate = new Date(startDate);
 		endDate = startDate;
@@ -51,8 +54,9 @@ $( document ).ready(function() {
     //var expediaResult = getExpediaResults(location, startDate, endDate);
 
     var city = toReturn[2];
-    var start = toReturn[0];
-    var end = toReturn[1];
+    
+    var start = toReturn[0].getMonth() + "-" + toReturn[0].getDate() + '-' + toReturn[0].getFullYear();
+    var end = toReturn[1].getMonth() + "-" + toReturn[1].getDate() + '-' + toReturn[1].getFullYear();
     var price = ['$', '$$', '$$$'];
     var url = ['https://www.google.com', 'https://www.google.com', 'https://www.google.com'];
 
