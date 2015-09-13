@@ -5,10 +5,31 @@
   "description": "This extension runs Facebook event data through Expedia APIs",
   "version": "1.0",
 
+<<<<<<< HEAD
   "content_scripts": [
     {
       "matches": ["https://www.facebook.com/events/*"],
       "js": ["jquery-1.11.3.min.js","extraction.js"]
+=======
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Click here!"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+	"tabs",
+	"webNavigation"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["https://www.facebook.com/events/*", "http://www.facebook.com/events/*"],
+      //"exclude_globs" : ["https://www.facebook.com/events/upcoming*", "http://www.facebook.com/events/upcoming*", "https://www.facebook.com/events/calendar*", "http://www.facebook.com/events/calendar*", "https://www.facebook.com/events/subscribed*", "http://www.facebook.com/events/subscribed*", "https://www.facebook.com/events/past*", "http://www.facebook.com/events/past*", "https://www.facebook.com/events/explore*", "http://www.facebook.com/events/explore*", "https://www.facebook.com/events/birthdays*", "http://www.facebook.com/events/birthdays*", "https://www.facebook.com/events/invites*", "http://www.facebook.com/events/invites*", "https://www.facebook.com/events/saved*", "http://www.facebook.com/events/saved*", "https://www.facebook.com/events/hosting*", "http://www.facebook.com/events/hosting*"],
+      "js": ["jquery.min.js", "expediaInject.js"],
+      "all_frames": true
+>>>>>>> c8fb61737e8de1cb05e6e0b06b0ff4c8d7819b7e
     }
   ]
 }
