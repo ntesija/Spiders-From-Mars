@@ -60,16 +60,29 @@ $( document ).ready(function() {
     toReturn[1].setDate(toReturn[1].getDate()+1);
     var start = toReturn[0].getMonth() + "-" + toReturn[0].getDate() + '-' + toReturn[0].getFullYear();
     var end = toReturn[1].getMonth() + "-" + toReturn[1].getDate() + '-' + toReturn[1].getFullYear();
-    var price = ['$', '$$', '$$$'];
-    var url = ['https://www.google.com', 'https://www.google.com', 'https://www.google.com'];
 
-    var codeIn = "<li class='expander'><p><center><table style='width:85%' class='titleInfo'><tr><td>Travel to " + city + " from " + start + " to " + end + "</td></tr></table><table style='width:85%' class='info hide'><tr><td> Price: " + price[0] + " </td><td><div align='right'><form action = '" + url[0] +"'><input type='submit' value = 'Book Now!'></form></div></td></tr><tr><td> Price: " + price[1] + " </td><td><div align='right'><form action = '" + url[1] + "'><input type='submit' value = 'Book Now!'></form></div></td></tr><tr><td> Price: " + price[2] + " </td><td><div align='right'><form action = '" + url[2] + "'><input type='submit' value = 'Book Now!'></form></div></td></tr></table></p></center><script>var clickArea=document.getElementsByClassName('titleInfo')[0];clickArea.addEventListener('click', function(){var dropDown=document.getElementsByClassName('info')[0];dropDown.classList.toggle('hide');})</script></li>"
+	var prices = [ ['Price 1', 'Airline1', 'Hotel1', '**', 'https://www.google.com'],
+					['Price 2', 'Airline2', 'Hotel2', '***', 'https://www.google.com'],
+					['Price 3', 'Airline3', 'Hotel3', '****', 'https://www.google.com'] ]
+	
+	var price = "$1000";
+	var url = "https://www.google.com";
+	var flightPrice = "$700";
+	var airline = "AA";
+	var layTo = "2";
+	var layFrom = "4";
+	var hotelPrice = "$300";
+	var hotel = "Best Western";
+	var rating = "3.5";
+	var duration = "5";
+	
+    var codeIn = "<li class='expander'><p><center><table style='width:85%' class='titleInfo'><tr><td>Travel to " + city + " from " + start + " to " + end + "</td></tr></table><table style='width:85%' class='info hide'><tr><td> <b>Price:</b> " + price + " </td></tr><tr><td><b>Flight:</b> " + flightPrice + " | Airline: " + airline + " | Layovers (To/From): " + layTo + "/" + layFrom + "</td></tr><tr><td><b>Hotel:</b> " + hotelPrice + " | Name: " + hotel + ": " + rating + " Stars | Duration: " + duration + " Nights</td></tr><tr><td><form action='" + url +"'><input type='submit' value='Book Now!'></form></td></tr></table></p></center><script>var clickArea=document.getElementsByClassName('titleInfo')[0];clickArea.addEventListener('click', function(){var dropDown=document.getElementsByClassName('info')[0];dropDown.classList.toggle('hide');})</script></li>"
     if (!isLoaded) {
         var x = $("#event_summary").find("div");
         x.find("ul").append(codeIn);
         console.log("Appeneded li");
         isLoaded = true;
-}
+	}
 
 
 });
